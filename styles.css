@@ -346,3 +346,35 @@ body {
   .sidebar { flex-direction: column; align-items: stretch; }
   .main-content { padding: 16px; }
 }
+
+/* styles.css の末尾に以下を追加してください */
+
+/* プロファイル切り替えエリア */
+.profile-selector {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-selector .label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* 選択中のボタンのスタイル */
+.btn.active {
+  background-color: var(--text-primary);
+  color: white;
+  border-color: var(--text-primary);
+}
+
+/* 非選択のボタンのスタイル */
+.btn:not(.active) {
+  color: var(--text-secondary);
+}
