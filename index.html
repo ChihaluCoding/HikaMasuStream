@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Twitch & YouTube Live Monitor" />
+    <title>Stream Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo-icon"></div>
+          <h1>Stream Analytics</h1>
+        </div>
+        
+        <div class="control-panel">
+          <div class="status-indicator">
+            <span class="label">System Status</span>
+            <div id="form-errors" class="status-text ready">Ready</div>
+          </div>
+          
+          <div class="button-group">
+            <button id="start-btn" type="button" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              モニタリング開始
+            </button>
+            <button id="stop-btn" type="button" class="btn btn-secondary">停止</button>
+          </div>
+        </div>
+
+        <div class="meta-info">
+          <div class="meta-item">
+            <small>Last Update</small>
+            <span id="last-updated">-</span>
+          </div>
+          <div class="meta-item">
+            <small>API Response</small>
+            <span id="api-message" class="truncate">-</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="stats-grid">
+          <article class="card stat-card twitch-theme">
+            <div class="card-header">
+              <span class="platform-badge">Twitch</span>
+              <span id="live-status" class="live-badge offline">OFFLINE</span>
+            </div>
+            <div class="stat-body">
+              <div class="stat-main">
+                <span class="stat-label">Current Viewers</span>
+                <span id="viewer-count" class="stat-number">-</span>
+              </div>
+              <div class="stat-details">
+                <p id="stream-title" class="truncate-text">No Stream Title</p>
+                <p id="game-name" class="category-text">-</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card stat-card youtube-theme">
+            <div class="card-header">
+              <span class="platform-badge">YouTube</span>
+              <span id="youtube-live-status" class="live-badge offline">OFFLINE</span>
+            </div>
+            <div class="stat-body">
+              <div class="stat-main">
+                <span class="stat-label">Current Viewers</span>
+                <span id="youtube-viewer-count" class="stat-number">-</span>
+              </div>
+              <div class="stat-details">
+                <p id="youtube-stream-title" class="truncate-text">No Stream Title</p>
+                <p class="category-text">Live Streaming</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <section class="card chart-section">
+          <div class="chart-header">
+            <h2>Realtime Trends</h2>
+            <div class="chart-legend">
+              <div class="legend-item"><span class="dot twitch"></span>Twitch</div>
+              <div class="legend-item"><span class="dot youtube"></span>YouTube</div>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="viewer-chart"></canvas>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="security-notice">
+      API Keys are configured in app.js
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
